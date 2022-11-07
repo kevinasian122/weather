@@ -1,0 +1,54 @@
+body{
+    display:flex;
+    flex-grow:1;
+    margin:0;
+}
+
+.left{
+    background-color: lightblue;
+    width:50vw;
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.right{
+    background-color: lightgreen;
+    width:50vw;
+    height:100vh;
+}
+.form{
+    position:absolute;
+    left:51%;
+    top:2%;
+    transform: translate(-50%, 0);
+    
+}
+.form .location{
+    height: 30px;
+    width: 15vw;
+
+}
+
+/* elements in left */
+.content{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+.name{
+    font-size: 58px;
+    font-weight: 10;
+}
+.temp{
+    font-size: 36px;
+    font-weight: 7;
+}
+.description {
+    font-size: 36px;
+    
+}
+.wind, .range{
+    font-size: 28px;
+}
