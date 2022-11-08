@@ -1,10 +1,21 @@
+/*
+TODO:
+- add functionality for displaying what clothes to wear on the right side
+- better background picture
+- animations to display data
 
+*/
 
 async function getWeather(location){
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=b1f049f82b24f0b013d420e76a5f87a3`, {mode: 'cors'});
-    const data = await response.json();
-    const processedWeather = processData(data);
-    displayData(processedWeather);
+    try{
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=b1f049f82b24f0b013d420e76a5f87a3`, {mode: 'cors'});
+        const data = await response.json();
+        const processedWeather = processData(data);
+        displayData(processedWeather);
+    } catch (error) {
+        window.alert("could not find this location");
+    }
+    
 }
 getWeather("Waterloo");
 
@@ -34,9 +45,18 @@ function displayData(weather){
     const content = document.querySelector(".content");
     content.innerHTML = `
     <div class ="name">${weather.location}, ${weather.country}</div>
-    <div class ="temp">${weather.temp}&#8451;</div>
-    <div class ="description">${weather.description}</div>
-    <div class ="range">Max: ${weather.maxtemp}&#8451; Min: ${weather.mintemp}&#8451;</div>
-    <div class ="wind">Wind: ${weather.wind} mph</div>`;
+    <div class = "bottom"> 
+        <div class = "temps">
+            <div class ="temp">${weather.temp}&#8451;</div>
+            <div class ="max">Max:  ${weather.maxtemp}&#8451; </div>
+            <div class = "min"> Min:  ${weather.mintemp}&#8451;</div>
+        </div>
+        <div class = "other">
+        <div class ="description">${weather.description}</div>
+            <div class ="wind">Wind: ${weather.wind} mph</div>
+        </div>
+    </div>`
+    
+    
 
 }
